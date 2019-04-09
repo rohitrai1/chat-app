@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import Message from "./Message";
 
 class MessageList extends Component {
   state = {};
@@ -7,10 +8,7 @@ class MessageList extends Component {
     return (
       <div>
         {this.props.messages.map((message, index) => (
-          <div key={index}>
-            <div>{message.senderId}</div>
-            <div>{message.text}</div>
-          </div>
+          <Message key={index} name={message.senderId} text={message.text} />
         ))}
       </div>
     );
