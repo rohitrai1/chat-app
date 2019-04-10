@@ -9,6 +9,7 @@
   color: #dddfd4;
   font-weight: bold;
   border-style: none;
+  outline: 0;
 }
 
 #wrap {
@@ -41,6 +42,7 @@ body {
   padding: 0 !important;
   font: inherit;
   cursor: pointer;
+  outline: 0;
 }
 
 li {
@@ -74,4 +76,8 @@ div.roomlist {
 
 .heavy {
   font-weight: bold;
+}
+
+button:focus {
+  outline: 0 !important;
 }
