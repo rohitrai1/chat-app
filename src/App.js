@@ -5,6 +5,7 @@ import RoomList from "./Components/RoomList";
 import { ChatManager, TokenProvider } from "@pusher/chatkit-client";
 import SendMessageForm from "./Components/SendMessageForm";
 import NewRoomForm from "./Components/NewRoomForm";
+import "./Components/style.css";
 
 class App extends Component {
   state = {
@@ -100,8 +101,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="row">
+      <div id="wrap">
+        <div className="row row1">
           <div className="col-3 border">
             <RoomList
               roomId={this.state.roomId}
@@ -116,7 +117,7 @@ class App extends Component {
             />
           </div>
         </div>
-        <div className="row">
+        <div className="row row2">
           <div className="col-3 border">
             <NewRoomForm createRoom={this.createRoom} />
           </div>

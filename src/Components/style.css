@@ -8,3 +8,48 @@
 .navigation-active {
   color: red;
 }
+
+#wrap {
+  height: 100% !important ;
+}
+
+.row1 {
+  height: 90%;
+}
+.row2 {
+  height: 10%;
+}
+
+html,
+body {
+  height: 100vh;
+}
+#root {
+  height: 100vh;
+}
+
+.sendmessage {
+  height: 100%;
+}
+
+#link {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+}
+
+.roomlist {
+  margin: 20px;
+}
+.join {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+}

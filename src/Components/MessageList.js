@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import "./style.css";
+
 import Message from "./Message";
 
 class MessageList extends Component {
   state = {};
   render() {
     if (!this.props.roomId) {
-      return <div>Join a room</div>;
+      return (
+        <div align="center" className="join ">
+          <h1>&larr;Join a room</h1>
+        </div>
+      );
     } else {
       return (
         <div>

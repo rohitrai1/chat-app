@@ -21,16 +21,15 @@ class SendMessageForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            placeholder="Type your message here and hit Enter"
-            type="text"
-            value={this.state.message}
-          />
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit} className="row sendmessage">
+        <input
+          onChange={this.handleChange}
+          placeholder="Type your message here and hit Enter"
+          type="text"
+          value={this.state.message}
+          className="col-12"
+        />
+      </form>
     );
   }
 }

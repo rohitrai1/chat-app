@@ -21,17 +21,16 @@ class NewRoomForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            placeholder="Create room here"
-            type="text"
-            value={this.state.roomName}
-          />
-          <button>+</button>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit} className="row sendmessage">
+        <input
+          onChange={this.handleChange}
+          placeholder="Create room here"
+          type="text"
+          value={this.state.roomName}
+          className="col-sm-10"
+        />
+        <button className="col-sm-2">+</button>
+      </form>
     );
   }
 }
