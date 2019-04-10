@@ -103,14 +103,14 @@ class App extends Component {
     return (
       <div id="wrap">
         <div className="row row1">
-          <div className="col-3 border">
+          <div className="col-3 border rooms">
             <RoomList
               roomId={this.state.roomId}
               subscribeToRoom={this.subscribeToRoom}
               rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
             />
           </div>
-          <div className="col-9 border">
+          <div className="col-9 border messagelist">
             <MessageList
               roomId={this.state.roomId}
               messages={this.state.messages}

@@ -9,7 +9,7 @@ class RoomList extends Component {
       <div className="roomlist">
         <div className="row">
           <div className="col-12">
-            <h2>Rooms:</h2>
+            <h2 className="heavy">Rooms:</h2>
           </div>
         </div>
         <div className="row">
@@ -27,7 +27,7 @@ class RoomList extends Component {
                   id="link"
                   onClick={() => this.props.subscribeToRoom(room.id)}
                 >
-                  {room.name}
+                  # {room.name}
                 </button>
               </li>
             ))}

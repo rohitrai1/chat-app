@@ -6,7 +6,9 @@
 }
 
 .navigation-active {
-  color: red;
+  color: #dddfd4;
+  font-weight: bold;
+  border-style: none;
 }
 
 #wrap {
@@ -56,4 +58,20 @@ li {
   top: 5%;
   left: 20%;
   overflow: hidden;
+}
+div.roomlist {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #dddfd4;
+  font-size: 20px;
+}
+.messagelist {
+  background-color: #dddfd4;
+}
+
+.rooms {
+  background-color: #3fb0ac;
+}
+
+.heavy {
+  font-weight: bold;
 }
