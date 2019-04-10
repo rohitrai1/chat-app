@@ -4,9 +4,10 @@ class RoomList extends Component {
   state = {};
 
   render() {
+    const orderedRooms = [...this.props.rooms].sort((a, b) => a.id - b.id);
     return (
       <div>
-        {this.props.rooms.map((room, index) => (
+        {orderedRooms.map((room, index) => (
           <li key={index}>
             <button onClick={() => this.props.subscribeToRoom(room.id)}>
               {room.name}
