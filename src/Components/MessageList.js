@@ -13,10 +13,18 @@ class MessageList extends Component {
       );
     } else {
       return (
-        <div>
-          {this.props.messages.map((message, index) => (
-            <Message key={index} name={message.senderId} text={message.text} />
-          ))}
+        <div className="row">
+          <div className="col-12 createroom">
+            <p className="messagelist">
+              {this.props.messages.map((message, index) => (
+                <Message
+                  key={index}
+                  name={message.senderId}
+                  text={message.text}
+                />
+              ))}
+            </p>
+          </div>
         </div>
       );
     }

@@ -6,7 +6,7 @@
 }
 
 .navigation-active {
-  color: #dddfd4;
+  color: #fae596;
   font-weight: bold;
   border-style: none;
   outline: 0;
@@ -63,15 +63,17 @@ li {
 }
 div.roomlist {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: #dddfd4;
+  color: #f6f8f9;
   font-size: 20px;
 }
-.messagelist {
-  background-color: #dddfd4;
+div.messagelist {
+  background-color: rgb(255, 255, 255);
+  overflow: scroll;
 }
 
 .rooms {
   background-color: #3fb0ac;
+  overflow: scroll;
 }
 
 .heavy {
@@ -80,4 +82,34 @@ div.roomlist {
 
 button:focus {
   outline: 0 !important;
+}
+
+p.messagelist {
+  margin-top: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #f6f8f9;
+}
+
+.text {
+  background-color: #3fb0ac;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.messagedetail {
+  margin-top: 10px;
+}
+.sender {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #173e43;
+}
+input {
+  background-color: #dddfd4;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #173e43;
+  opacity: 1; /* Firefox */
 }

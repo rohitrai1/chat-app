@@ -24,12 +24,11 @@ class NewRoomForm extends Component {
       <form onSubmit={this.handleSubmit} className="row sendmessage">
         <input
           onChange={this.handleChange}
-          placeholder="Create room here"
+          placeholder="Create room here                               +"
           type="text"
           value={this.state.roomName}
-          className="col-sm-10"
+          className="col-sm-12"
         />
-        <button className="col-sm-2">+</button>
       </form>
     );
   }
