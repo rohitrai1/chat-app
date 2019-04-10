@@ -83,6 +83,7 @@ class App extends Component {
         <div className="row">
           <div className="col-3 border">
             <RoomList
+              roomId={this.state.roomId}
               subscribeToRoom={this.subscribeToRoom}
               rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
             />

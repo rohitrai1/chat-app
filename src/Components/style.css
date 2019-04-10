@@ -1,3 +1,10 @@
 .border {
   border: solid 1px black;
 }
+
+.navigation {
+}
+
+.navigation-active {
+  color: red;
+}

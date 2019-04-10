@@ -8,7 +8,12 @@ class RoomList extends Component {
     return (
       <div>
         {orderedRooms.map((room, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className={
+              this.props.roomId === room.id ? "navigation-active" : "navigation"
+            }
+          >
             <button onClick={() => this.props.subscribeToRoom(room.id)}>
               {room.name}
             </button>
