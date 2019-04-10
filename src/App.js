@@ -72,10 +72,14 @@ class App extends Component {
   };
 
   sendMessage = text => {
-    this.currentUser.sendMessage({
-      text,
-      roomId: this.state.roomId
-    });
+    if (!this.state.roomId) {
+      alert("First select a room from the room list");
+    } else {
+      this.currentUser.sendMessage({
+        text,
+        roomId: this.state.roomId
+      });
+    }
   };
 
   createRoom = name => {
