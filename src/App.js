@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import RoomList from "./Components/RoomList";
 import { ChatManager, TokenProvider } from "@pusher/chatkit-client";
 import SendMessageForm from "./Components/SendMessageForm";
+import NewRoomForm from "./Components/NewRoomForm";
 
 class App extends Component {
   state = {
@@ -77,6 +78,22 @@ class App extends Component {
     });
   };
 
+  createRoom = name => {
+    this.currentUser
+      .createRoom({
+        name,
+        private: false,
+        addUserIds: ["rovit"],
+        customData: { foo: 42 }
+      })
+      .then(room => {
+        this.subscribeToRoom(room.id);
+      })
+      .catch(err => {
+        console.log(`Error creating room ${err}`);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -89,11 +106,16 @@ class App extends Component {
             />
           </div>
           <div className="col-9 border">
-            <MessageList messages={this.state.messages} />
+            <MessageList
+              roomId={this.state.roomId}
+              messages={this.state.messages}
+            />
           </div>
         </div>
         <div className="row">
-          <div className="col-3 border"> </div>
+          <div className="col-3 border">
+            <NewRoomForm createRoom={this.createRoom} />
+          </div>
           <div className="col-9 border">
             <SendMessageForm sendMessage={this.sendMessage} />
           </div>
