@@ -45,11 +45,15 @@ li {
   list-style-type: none;
 }
 
-.roomlist {
-  margin: 20px;
-}
 .join {
   position: absolute;
   top: 45%;
   left: 30%;
+}
+
+.roomlist {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  overflow: hidden;
 }
