@@ -7,6 +7,7 @@ import SendMessageForm from "./Components/SendMessageForm";
 
 class App extends Component {
   state = {
+    roomId: null,
     messages: [],
     joinableRooms: [],
     joinedRooms: []
@@ -26,39 +27,53 @@ class App extends Component {
       .connect()
       .then(currentUser => {
         this.currentUser = currentUser;
-
-        this.currentUser
-          .getJoinableRooms()
-          .then(joinableRooms => {
-            this.setState({
-              joinableRooms: joinableRooms,
-              joinedRooms: this.currentUser.rooms
-            });
-          })
-          .catch(err => {
-            console.log(`Error getting joinable rooms: ${err}`);
-          });
-
-        this.currentUser.subscribeToRoom({
-          roomId: "31208032",
-          hooks: {
-            onMessage: message => {
-              this.setState({
-                messages: [...this.state.messages, message]
-              });
-            }
-          }
-        });
+        this.getRooms();
       })
       .catch(err => {
         console.log("Error on connection", err);
       });
   }
+  getRooms = () => {
+    console.log("current", this.currentUser.rooms);
+    this.currentUser
+      .getJoinableRooms()
+      .then(joinableRooms => {
+        this.setState({
+          joinableRooms: joinableRooms,
+          joinedRooms: this.currentUser.rooms
+        });
+      })
+      .catch(err => {
+        console.log(`Error getting joinable rooms: ${err}`);
+      });
+  };
+  subscribeToRoom = roomId => {
+    this.setState({
+      messages: []
+    });
+    this.currentUser
+      .subscribeToRoom({
+        roomId,
+        hooks: {
+          onMessage: message => {
+            this.setState({
+              messages: [...this.state.messages, message]
+            });
+          }
+        }
+      })
+      .then(room => {
+        this.setState({
+          roomId: room.id
+        });
+        this.getRooms();
+      });
+  };
 
   sendMessage = text => {
     this.currentUser.sendMessage({
       text,
-      roomId: "31208032"
+      roomId: this.state.roomId
     });
   };
 
@@ -68,7 +83,8 @@ class App extends Component {
         <div className="row">
           <div className="col-3 border">
             <RoomList
-              rooms={[...this.state.joinableRooms, ...this.state.joinableRooms]}
+              subscribeToRoom={this.subscribeToRoom}
+              rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
             />
           </div>
           <div className="col-9 border">
