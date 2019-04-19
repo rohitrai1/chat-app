@@ -7,8 +7,14 @@
     "@pusher/chatkit-client": "^1.4.1",
     "@pusher/chatkit-server": "^1.1.0",
     "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "history": "^4.9.0",
+    "mongodb": "^3.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
   "scripts": {
