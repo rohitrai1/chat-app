@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class UserLoginForm extends Component {
+class UserSignUpForm extends Component {
   state = {
     data: {
       username: "",
+      firstname: "",
+      lastname: "",
+      email: "",
       password: ""
     }
   };
@@ -13,37 +16,34 @@ class UserLoginForm extends Component {
       data: { ...this.state.data, [event.target.name]: event.target.value }
     });
   };
-
   handleSubmit = event => {
     event.preventDefault();
     const data = this.state.data;
-    console.log("==========", data);
-    fetch("http://localhost:2000/login", {
+    fetch("http://localhost:2000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         username: data.username,
+        firstname: data.firstname,
+        lastname: data.lastname,
+        email: data.email,
         password: data.password
       })
     }).then(result => {
       if (result && result.status === 200) {
-        console.log(result.status);
-
-        sessionStorage.setItem("loggedIn", "loggedIn");
         return (window.location = "/home");
       }
     });
   };
-
   render() {
     return (
       <div class="container">
         <div class="d-flex justify-content-center h-100">
-          <div class="card">
+          <div class="card-signup">
             <div class="card-header">
-              <h3>Sign In</h3>
+              <h3>Sign Up</h3>
               <div class="d-flex justify-content-end social_icon">
                 <span>
                   <i class="fab fa-facebook-square" />
@@ -76,6 +76,52 @@ class UserLoginForm extends Component {
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
+                      <i class="fas fa-user" />
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="firstname"
+                    value={this.state.firstname}
+                    onChange={this.handleChange}
+                    name="firstname"
+                  />
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-user" />
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="lastname"
+                    value={this.state.lastname}
+                    onChange={this.handleChange}
+                    name="lastname"
+                  />
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-user" />
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    name="email"
+                  />
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
                       <i class="fas fa-key" />
                     </span>
                   </div>
@@ -88,26 +134,20 @@ class UserLoginForm extends Component {
                     name="password"
                   />
                 </div>
-                <div class="row align-items-center remember">
-                  <input type="checkbox" />
-                  Remember Me
-                </div>
                 <div class="form-group">
                   <input
                     type="submit"
-                    value="Login"
+                    value="Sign Up"
                     class="btn float-right login_btn"
                   />
                 </div>
               </form>
             </div>
             <div class="card-footer">
-              <div class="d-flex justify-content-center links">
-                Don't have an account?<Link to="/signup">Sign Up</Link>
+              <div class="justify-content-center links">
+                Already! have an account?<Link to="/">Sign In</Link>
               </div>
-              <div class="d-flex justify-content-center">
-                <a href="">Forgot your password?</a>
-              </div>
+              <div class="d-flex justify-content-center" />
             </div>
           </div>
         </div>
@@ -116,4 +156,4 @@ class UserLoginForm extends Component {
   }
 }
 
-export default UserLoginForm;
+export default UserSignUpForm;

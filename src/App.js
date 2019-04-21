@@ -9,6 +9,9 @@ import {
 import UserLoginForm from "./Components/UserLoginForm";
 import ChatApp from "./ChatApp";
 import PrivateRoute from "./Components/PrivateRoute";
+import UserSignUpForm from "./Components/UserSignUpForm";
+import { homedir } from "os";
+import Home from "./Components/Home";
 
 class App extends Component {
   state = {};
@@ -25,6 +28,8 @@ class App extends Component {
           />
 
           <PrivateRoute path="/chatapp" exact component={ChatApp} />
+          <Route path="/signup" exact component={UserSignUpForm} />
+          <Route path="/home" exact component={Home} />
         </Switch>
       </BrowserRouter>
     );

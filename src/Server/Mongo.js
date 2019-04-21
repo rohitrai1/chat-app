@@ -72,6 +72,56 @@ app.post("/login", (req, res) => {
   });
 });
 
+app.post("/signup", (req, res) => {
+  const db = client.db(dbName);
+
+  db.collection("Users")
+    .findOne({ email: req.body.email })
+    .then(user => {
+      if (user) {
+        return res.status(400).json({ email: "Email already exists" });
+      }
+
+      db.collection("Users")
+        .insert(
+          {
+            user_name: req.body.username,
+            first_name: req.body.firstname,
+            last_name: req.body.lastname,
+            email: req.body.email,
+            password: req.body.password
+          },
+          function(err, results) {
+            if (err) {
+              res.send({ code: 400, failed: "error ocurred" });
+            } else {
+              console.log(results);
+              if (results && results.length > 0) {
+                if (results[0].password == password) {
+                  res.send({
+                    code: 200,
+                    success: "login sucessfull"
+                  });
+                } else {
+                  res.send({
+                    code: 204,
+                    success: "Email and password does not match"
+                  });
+                }
+              } else {
+                res.send({
+                  code: 204,
+                  success: "Email does not exits"
+                });
+              }
+            }
+          }
+        )
+        .then(user => res.json(user))
+        .catch(err => console.log(err));
+    });
+});
+
 app.listen("2000", () => {
   console.log("Server started n port 2000");
 });
